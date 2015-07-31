@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: #3c3f41;
+}
+
+.jumbotron {
+    text-align: center;
+}
+
+.glyphicon {
+    cursor: pointer;
+}
+
+.deleteBtn {
+    margin-bottom: 20px;
+    border-radius: 5px;
+    color: red;
+    background-color: #3c3f41;
+}

@@ -24,7 +24,7 @@ var app = angular.module('reddit').service('FirebaseService', function($http, $q
 
     this.addData = function(post) {
         post.timestamp = Date.now();
-        post.comments = ['-'];
+        post.comments = [];
         post.karma = 0;
         post.id = guid();
         return $http({
@@ -52,12 +52,12 @@ var app = angular.module('reddit').service('FirebaseService', function($http, $q
         return dfd.promise;
     };
 
-    this.submitComment = function(id, text) {
+    this.submitComment = function(id, comments) {
         var dfd = $q.defer();
         $http({
             method: 'PATCH',
             url: 'https://devmtn.firebaseio.com/posts/' + id + '.json',
-            data: {comments: text}
+            data: {comments: comments}
         }).then(function(result) {
             dfd.resolve(result.data.comments)
         });

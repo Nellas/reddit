@@ -6,7 +6,6 @@ var app = angular.module('reddit').controller('PostsController', function($scope
         })
 
     };
-
     $scope.getPosts();
 
 
@@ -22,9 +21,13 @@ var app = angular.module('reddit').controller('PostsController', function($scope
         })
     };
 
-    $scope.submitComment = function(id, text, commentArr) {
-        FirebaseService.submitComment(id, text, commentArr).then(function() {
-            $scope.getPosts();
+    $scope.submitComment = function(id, text, commentsArray) {
+        if(!Array.isArray(commentsArray)){
+            commentsArray = [];
+        }
+        commentsArray.push(text);
+        FirebaseService.submitComment(id, commentsArray).then(function() {
+                $scope.getPosts();
         })
     };
 
@@ -33,7 +36,5 @@ var app = angular.module('reddit').controller('PostsController', function($scope
             $scope.getPosts();
         })
     }
-
-
 
 });

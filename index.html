@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html ng-app="reddit">
 <head>
-    <title>Reddit</title>
+    <title>Forum Project</title>
     <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body ng-controller="PostsController">
 <div class="container">
     <div class="jumbotron">
-        <h1>Welcome to Reddit?!</h1>
+        <h1>Forum Project</h1>
     </div>
     <div class="row">
         <div class="col-md-6">
@@ -26,9 +26,9 @@
                         <p>Karma: {{post.karma}}</p>
                         <span ng-click="vote(post.id, 'up', post.karma)" class="glyphicon glyphicon-thumbs-up"></span>
                         <span ng-click="vote(post.id, 'down', post.karma)" class="glyphicon glyphicon-thumbs-down"></span>
-                        <a href="#" ng-click="deletePost(post.id)">delete</a>
                         <hr>
-                        <form ng-submit="submitComment(post.id, post.commentForm)">
+                        <input type="button" class="deleteBtn" ng-click="deletePost(post.id)" value="Delete Post">
+                        <form ng-submit="submitComment(post.id, post.commentForm, post.comments)">
                             <div class="form-group">
                                 <textarea class="form-control" placeholder="comment" ng-model="post.commentForm"></textarea>
                             </div>
@@ -37,7 +37,7 @@
                             </div>
                         </form>
                         <div ng-repeat="item in post.comments">
-                            {{item.comments}}
+                            {{item}}
                             <hr>
                         </div>
                     </div>
